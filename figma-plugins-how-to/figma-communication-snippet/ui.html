@@ -1,0 +1,16 @@
+<h2>Communication Snippet</h2>
+<p>You moved focus out of Plugin UI:&nbsp;<span id="document-value">0</span>x</p>
+<script>
+
+  onmessage = (msg) => {
+    document.getElementById("document-value").innerHTML = msg.data.pluginMessage.value;
+  };
+
+  window.onfocus = () => {
+    parent.postMessage(
+      { pluginMessage: { type: "focus", name: "" } },
+      "*",
+    );
+  };
+
+</script>
